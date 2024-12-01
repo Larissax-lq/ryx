@@ -37,14 +37,16 @@ plot.ryx <- function(x, ...) {
     labs(title = paste("Correlations of", x$y), y = "Variables") +
     # Customize the background with vertical dashed lines
     theme(
-      legend.title = element_text(),  # Regular legend title
+      legend.title = element_text(face = "plain"),  # Set legend title to regular (not bold)
+      legend.text = element_text(face = "plain"),   # Set legend text to regular (not bold)
+      axis.title = element_text(face = "plain"),    # Set axis titles to regular (not bold)
+      axis.text = element_text(face = "plain"),     # Set axis labels to regular (not bold)
+      plot.title = element_text(face = "plain"),    # Set the plot title to regular (not bold)
       panel.grid.major.x = element_blank(),  # Remove vertical grid lines
       panel.grid.minor.x = element_blank(),  # Remove minor vertical grid lines
       panel.grid.major.y = element_blank(),  # Remove horizontal grid lines
       panel.border = element_rect(color = "black", fill = NA, size = 0.5)  # Add a border around the plot
-
     ) +
     # Add vertical dashed lines at specific breaks
     geom_vline(xintercept = seq(0, 1, by = 0.1), linetype = "dashed", color = "grey", size = 0.1)
 }
-
