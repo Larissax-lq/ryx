@@ -1,0 +1,76 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+
+
+
+# ryx
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+<img src="Correlation.jpg" alt="Correlation" width="800"/>
+
+
+
+The goal of ryx is to provide a package for conducting correlation analysis, summarizing the results, and visualizing the findings in a publication-ready format. The package is designed to simplify the process of calculating correlation coefficients between a dependent variable (y) and one or more independent variables (x), and to produce easy-to-read summaries and plots for quick interpretation.
+
+## Installation
+
+You can install the development version of ryx like so:
+
+```{r}
+# Install the ryx package
+install.packages("ryx")
+```
+
+
+```{r}
+# Install the MASS package
+install.packages("MASS")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+It uses the Boston dataset from the MASS package. The goal is to analyze the correlations between the dependent variable medv (median house value) and the independent variables in the dataset.
+```{r}
+library(MASS)
+library(ryx)
+```
+
+This command runs the correlation analysis on the Boston dataset, with medv as the dependent variable.
+```{r}
+# Perform correlation analysis
+result <- ryx(Boston, y = "medv")
+```
+
+```{r}
+# Print the result
+print(result)
+```
+The print() function displays the correlation results in a table format, showing the correlation coefficient (r), p-value, and significance level for each independent variable.
+
+```{r}
+# Visualize the correlation results
+plot(result)
+```
+The plot() function generates a ggplot-based visualization of the correlation results, displaying correlation strength and direction for each independent variable.
+
+```{r}
+# Summarize the correlation analysis
+summary(result)
+```
+The summary(result) provides a summary of the correlation analysis, including the median absolute correlation, the range of correlations, and the number of significant correlations.

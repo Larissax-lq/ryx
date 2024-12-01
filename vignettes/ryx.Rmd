@@ -1,0 +1,66 @@
+---
+title: "Introduction to ryx"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to ryx}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(ryx)
+library(MASS)
+```
+
+
+# ryx package
+The ryx package provides functions for conducting correlation analysis, visualizing the results, and summarizing the findings. It is designed to calculate and display correlation coefficients between a dependent variable (y) and one or more independent variables (x), and to visualize these correlations using ggplot2.
+ryx(): Conducts the correlation analysis.
+print.ryx(): Prints a  summary of the results.
+plot.ryx(): Visualizes the  results.
+summary.ryx(): Provides a summary of key statistics from the correlation analysis.
+
+# examples
+In this vignette, the Boston housing dataset from the MASS package is utilized as an example. The goal is to analyze the correlations between the dependent variable medv (median house value) and the independent variables in the dataset.
+```{r}
+library(MASS)
+```
+
+
+# ryx()
+The ryx() function calculates the correlation coefficients between a dependent variable (y) and one or more independent variables (x). If the x variable is not specified, ryx() will use all numeric variables in the dataset except for the dependent variable.
+```{r}
+result <- ryx(Boston, y = "medv") # Perform correlation analysis
+```
+
+# print.ryx()
+The print.ryx() function is designed to take the results of the ryx() function and display them in an more organized format. It includes the following information for each independent variable: 
+- variable: The name of the independent variable.
+- r: The correlation coefficient (rounded to 3 decimal places).
+- p_display: The p-value formatted in scientific notation, rounded to 2 decimal places.
+- sigif: The significance level, represented as stars (***, **, *, or no stars based on p-value thresholds).
+```{r}
+print(result)
+```
+
+
+# plot.ryx()
+The plot.ryx() function creates a ggplot visualization of the correlations between the dependent variable (y) and the independent variables (x). It displays grey horizontal lines representing the correlation strength, with colored dots indicating the direction of the correlation: red for negative and blue for positive.The x-axis represents the absolute value of the correlation coefficient, ranging from 0 to 1. The y-axis shows the names of the variables.
+```{r}
+plot(result) 
+```
+
+
+# summary.ryx()
+The summary.ryx() function provides a summary of the correlation analysis stored in a ryx object. It calculates key statistics, including the median absolute correlation, the range of correlations, and the number of significant correlations (p-value < 0.05).
+```{r}
+summary(result)
+```
+

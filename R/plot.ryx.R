@@ -15,13 +15,13 @@
 
 plot.ryx <- function(x, ...) {
   library(ggplot2)
-  
+
   # Add a direction column to the data for color coding
   x$df$direction <- ifelse(x$df$r < 0, "negative", "positive")
-  
+
   ggplot(x$df, aes(y = reorder(variable, abs(r)), x = abs(r))) +
     # Grey line for each variable
-    geom_segment(aes(x = 0, xend = abs(r), yend = reorder(variable, abs(r))), 
+    geom_segment(aes(x = 0, xend = abs(r), yend = reorder(variable, abs(r))),
                  color = "grey", size = 0.5) +
     # Red or Blue dot at the end of the line
     geom_point(aes(color = direction), size = 3) +
@@ -33,3 +33,5 @@ plot.ryx <- function(x, ...) {
     labs(title = paste("Correlations of", x$y), y = "Variables") +
     theme(legend.title = element_blank())  # Remove legend title
 }
+
+
