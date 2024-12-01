@@ -4,8 +4,7 @@ Version: 0.0.0.9000
 Authors@R: 
     person("Larissa", "Xu", , "lxu01@wesleyan.edu", role = c("aut", "cre"))
 Description: The ryx package provides tools for performing correlation analysis between a response variable and one or more explanatory variables in a dataset. It calculates correlations, summarizes results, prints out and visualizes results. 
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
@@ -13,5 +12,3 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
-
-
