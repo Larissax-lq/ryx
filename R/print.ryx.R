@@ -12,14 +12,16 @@
 #' print(result)
 
 print.ryx <- function(x, ...) {
+  # Extract the correlation data frame from the ryx object
+  cor_df <- x$df
+
+  # Format p-values as scientific notation with < 2e-16 if very small
+  cor_df$p_display <- ifelse(cor_df$p < 2e-16, "< 2e-16", formatC(cor_df$p, format = "e", digits = 2))
+
+  # Format correlation coefficients with 3 decimal places
+  cor_df$r <- formatC(cor_df$r, format = "f", digits = 3)
+
+  # Print the results in a cleaner table format
   cat("Correlations of", x$y, "with\n")
-  
-  # Format r-values with 3 decimal places
-  x$df$r <- round(x$df$r, 3)
-  
-  # Format p-values with 2 decimal places, in scientific notation where appropriate
-  x$df$p_display <- formatC(x$df$p, digits = 2, format = "e")
-  
-  # Print the results with formatted r-values and p-values
-  print(x$df[, c("variable", "r", "p_display", "sigif")], row.names = FALSE)
+  print(cor_df[, c("variable", "r", "p_display", "sigif")], row.names = FALSE)
 }
