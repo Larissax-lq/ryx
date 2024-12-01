@@ -9,7 +9,7 @@
 #' @examples
 #' x <- ryx(Boston, y = "medv")
 #' print(x)
-#' summary(x) 
+#' summary(x)
 
 
 summary.ryx <- function(object) {
@@ -18,10 +18,10 @@ summary.ryx <- function(object) {
   median_cor <- median(cor_values)
   cor_range <- range(cor_values)
   significant_count <- sum(cor_summary$p < 0.05)
-  
+
   cat("Correlating", paste(cor_summary$variable, collapse = " "), "\n")
-  cat("The median absolute correlation was", round(median_cor, 3), 
+  cat("The median absolute correlation was", round(median_cor, 3),
       "with a range from", round(cor_range[1], 3), "to", round(cor_range[2], 3), "\n")
-  cat(significant_count, "out of", nrow(cor_summary), 
+  cat(significant_count, "out of", nrow(cor_summary),
       "variables were significant at the p < 0.05 level.\n")
 }
