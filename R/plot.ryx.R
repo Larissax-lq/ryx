@@ -12,7 +12,6 @@
 #' x <- ryx(Boston, y = "medv")
 #' plot(x)
 
-
 plot.ryx <- function(x, ...) {
   library(ggplot2)
 
@@ -25,13 +24,27 @@ plot.ryx <- function(x, ...) {
                  color = "grey", size = 0.5) +
     # Red or Blue dot at the end of the line
     geom_point(aes(color = direction), size = 3) +
-    scale_color_manual(values = c("positive" = "blue", "negative" = "red")) +
-    # Set the x-axis limits and labels
-    scale_x_continuous(name = "Correlation (absolute value)", limits = c(0, 1), breaks = seq(0, 1, 0.1)) +
-    # Adding the title, minimal theme and labels
+    scale_color_manual(values = c("positive" = "blue", "negative" = "red"),
+                       name = "Direction") +  # Add the legend title here
+    # Set the x-axis limits and labels, with grid lines at specific intervals
+    scale_x_continuous(
+      name = "Correlation (absolute value)",
+      limits = c(0, 1),
+      breaks = seq(0, 1, 0.1)  # This sets the breaks for the x-axis
+    ) +
+    # Adding the title, minimal theme, and labels
     theme_minimal() +
     labs(title = paste("Correlations of", x$y), y = "Variables") +
-    theme(legend.title = element_blank())  # Remove legend title
-}
+    # Customize the background with vertical dashed lines
+    theme(
+      legend.title = element_text(),  # Regular legend title
+      panel.grid.major.x = element_blank(),  # Remove vertical grid lines
+      panel.grid.minor.x = element_blank(),  # Remove minor vertical grid lines
+      panel.grid.major.y = element_blank(),  # Remove horizontal grid lines
+      panel.border = element_rect(color = "black", fill = NA, size = 0.5)  # Add a border around the plot
 
+    ) +
+    # Add vertical dashed lines at specific breaks
+    geom_vline(xintercept = seq(0, 1, by = 0.1), linetype = "dashed", color = "grey", size = 0.1)
+}
 

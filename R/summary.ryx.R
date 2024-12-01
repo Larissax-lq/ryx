@@ -11,15 +11,24 @@
 #' print(x)
 #' summary(x)
 
-
 summary.ryx <- function(object) {
+  # Extract the correlation summary dataframe
   cor_summary <- object$df
-  cor_values <- abs(cor_summary$r)
-  median_cor <- median(cor_values)
+
+  # Get absolute values for correlation to calculate median and range
+  cor_values <- cor_summary$r
+
+  # Median of absolute correlations
+  median_cor <- median(abs(cor_values))
+
+  # Range of correlation values
   cor_range <- range(cor_values)
+
+  # Count of significant correlations (p < 0.05)
   significant_count <- sum(cor_summary$p < 0.05)
 
-  cat("Correlating", paste(cor_summary$variable, collapse = " "), "\n")
+  # Print the summary output
+  cat("Correlating", object$y, "with", paste(cor_summary$variable, collapse = " "), "\n")
   cat("The median absolute correlation was", round(median_cor, 3),
       "with a range from", round(cor_range[1], 3), "to", round(cor_range[2], 3), "\n")
   cat(significant_count, "out of", nrow(cor_summary),
