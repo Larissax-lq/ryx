@@ -55,18 +55,18 @@ result <- ryx(Boston, y = "medv")
 # Print the result
 print(result)
 #> Correlations of medv with
-#>  variable      r p_display sigif
-#>     lstat -0.738  5.08e-88   ***
-#>        rm  0.695  2.49e-74   ***
-#>   ptratio -0.508  1.61e-34   ***
-#>     indus -0.484  4.90e-31   ***
-#>       tax -0.469  5.64e-29   ***
-#>       nox -0.427  7.07e-24   ***
-#>      crim -0.388  1.17e-19   ***
-#>       age -0.377  1.57e-18   ***
-#>        zn  0.360  5.71e-17   ***
-#>     black  0.333  1.32e-14   ***
-#>       dis  0.250  1.21e-08   ***
+#>  variable      r        p sigif
+#>     lstat -0.738  < 2e-16   ***
+#>        rm  0.695  < 2e-16   ***
+#>   ptratio -0.508  < 2e-16   ***
+#>     indus -0.484  < 2e-16   ***
+#>       tax -0.469  < 2e-16   ***
+#>       nox -0.427  < 2e-16   ***
+#>      crim -0.388  < 2e-16   ***
+#>       age -0.377  < 2e-16   ***
+#>        zn  0.360  < 2e-16   ***
+#>     black  0.333 1.32e-14   ***
+#>       dis  0.250 1.21e-08   ***
 ```
 
 The print() function displays the correlation results in a table format,
@@ -86,8 +86,8 @@ each independent variable.
 ``` r
 # Summarize the correlation analysis
 summary(result)
-#> Correlating lstat rm ptratio indus tax nox crim age zn black dis 
-#> The median absolute correlation was 0.427 with a range from 0.25 to 0.738 
+#> Correlating medv with lstat rm ptratio indus tax nox crim age zn black dis 
+#> The median absolute correlation was 0.427 with a range from -0.738 to 0.695 
 #> 11 out of 11 variables were significant at the p < 0.05 level.
 ```
 

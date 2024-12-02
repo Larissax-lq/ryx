@@ -71,52 +71,10 @@
 <p>You can install the development version of ryx like so:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Install the ryx package</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"ryx"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in install.packages : Updating loaded packages</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"ryx"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Install the MASS package</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"MASS"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in install.packages : Updating loaded packages</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
-</h2>
-<p>This is a basic example which shows you how to solve a common problem: It uses the Boston dataset from the MASS package. The goal is to analyze the correlations between the dependent variable medv (median house value) and the independent variables in the dataset.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/" class="external-link">MASS</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">ryx</span><span class="op">)</span></span></code></pre></div>
-<p>This command runs the correlation analysis on the Boston dataset, with medv as the dependent variable.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Perform correlation analysis</span></span>
-<span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ryx.html">ryx</a></span><span class="op">(</span><span class="va">Boston</span>, y <span class="op">=</span> <span class="st">"medv"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Print the result</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Correlations of medv with</span></span>
-<span><span class="co">#&gt;  variable      r        p sigif</span></span>
-<span><span class="co">#&gt;     lstat -0.738  &lt; 2e-16   ***</span></span>
-<span><span class="co">#&gt;        rm  0.695  &lt; 2e-16   ***</span></span>
-<span><span class="co">#&gt;   ptratio -0.508  &lt; 2e-16   ***</span></span>
-<span><span class="co">#&gt;     indus -0.484  &lt; 2e-16   ***</span></span>
-<span><span class="co">#&gt;       tax -0.469  &lt; 2e-16   ***</span></span>
-<span><span class="co">#&gt;       nox -0.427  &lt; 2e-16   ***</span></span>
-<span><span class="co">#&gt;      crim -0.388  &lt; 2e-16   ***</span></span>
-<span><span class="co">#&gt;       age -0.377  &lt; 2e-16   ***</span></span>
-<span><span class="co">#&gt;        zn  0.360  &lt; 2e-16   ***</span></span>
-<span><span class="co">#&gt;     black  0.333 1.32e-14   ***</span></span>
-<span><span class="co">#&gt;       dis  0.250 1.21e-08   ***</span></span></code></pre></div>
-<p>The print() function displays the correlation results in a table format, showing the correlation coefficient (r), p-value, and significance level for each independent variable.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Visualize the correlation results</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-7-1.png" width="100%"> The plot() function generates a ggplot-based visualization of the correlation results, displaying correlation strength and direction for each independent variable.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Summarize the correlation analysis</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Correlating medv with lstat rm ptratio indus tax nox crim age zn black dis </span></span>
-<span><span class="co">#&gt; The median absolute correlation was 0.427 with a range from -0.738 to 0.695 </span></span>
-<span><span class="co">#&gt; 11 out of 11 variables were significant at the p &lt; 0.05 level.</span></span></code></pre></div>
-<p>The summary(result) provides a summary of the correlation analysis, including the median absolute correlation, the range of correlations, and the number of significant correlations.</p>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"MASS"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
   </div>
